@@ -7,6 +7,12 @@
 ### Contact: pedro.eisenlohr@unemat.br ###########################
 
 
+### Acknowledgments ###
+## Guarino Colli (Universidade de Brasília) 
+## Diogo Bezerra Rocha (Instituto de Pesquisas Jardim Botânico do Rio de Janeiro)
+## My students of LabEc (Ecology Lab, Alta Floresta-MT, Brazil)
+
+
 
 ###########################
 ## SET WORKING DIRECTORY ##
