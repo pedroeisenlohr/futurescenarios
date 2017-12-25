@@ -207,9 +207,10 @@ occurrence.resp <-  rep(1, length(myRespXY$long))
 ## FIT SPECIES DISTRIBUTION MODELS - SDMS ##
 ############################################
 
+########## Prepare data ##########
+
 ### For CTA, GBM and RF algorithms:
 ### for example, if you have n=100 ocurrence records
-# Prepare data
 sppBiomodData.PA.equal <- BIOMOD_FormatingData(
 	resp.var = occurrence.resp,
 	expl.var = env.selected,
