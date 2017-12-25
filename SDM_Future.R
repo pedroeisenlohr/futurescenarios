@@ -24,7 +24,7 @@ registerDoParallel(cl)
 getDoParWorkers()
 
 #Enhance memory limit:
-memory.limit(4000000) #or another suitable memory size (in KB)
+memory.limit(1000000) #or another suitable memory size (in KB)
 
 
 
@@ -143,7 +143,7 @@ data(wrld_simpl)
 plot(wrld_simpl, xlim = c(-100, -30), ylim = c(-60, 25), axes = TRUE, col = "light grey")
 
 # Set boundaries
-ext <- extent(-100, -30, -60, 25)
+ext <- extent(-100, -30, -60, 25) #Define here the extention of your projection area.
 
 # Crop layers (present)
 bio.crop1 <- crop(bio, ext)
@@ -156,8 +156,8 @@ bio.crop2
 bio.crop2 <-stack(bio.crop2)
 
 # Alternatively, exclude variables of your choice:
-bio.crop2 <- dropLayer(bio.crop1,c(1,2,3,4,5,6,8,9,10,12,13,14,17,18,19)) ###Include only variables that should be discarded.
-bio.crop2 #Check with caution!
+#bio.crop2 <- dropLayer(bio.crop1,c(1,2,3,4,5,6,8,9,10,12,13,14,17,18,19)) ###Include only variables that should be discarded.
+#bio.crop2 #Check with caution!
 
 # Select 10000 random points from mask
 mask <- bio.crop2$bio7 ###Any variable present in bio.crop2
@@ -201,6 +201,7 @@ occurrence.resp <-  rep(1, length(myRespXY$long))
 ## FIT SPECIES DISTRIBUTION MODELS - SDMS ##
 ############################################
 
+### For CTA, GBM and RF algorithms:
 ### for example, if you have n=100 ocurrence records
 # Prepare data
 sppBiomodData.PA.equal <- BIOMOD_FormatingData(
@@ -214,7 +215,8 @@ sppBiomodData.PA.equal <- BIOMOD_FormatingData(
 	PA.sre.quant = 0.025)
 sppBiomodData.PA.equal
 
-#Don't modify anything here, except PA.strategy and/or PA.sre.quant:
+# For the other 7 algorithms:
+#Don't modify anything here, except, if you wish, PA.strategy and/or PA.sre.quant:
 sppBiomodData.PA.10000 <- BIOMOD_FormatingData(
 	resp.var = occurrence.resp,
 	expl.var = env.selected,
@@ -367,11 +369,11 @@ write.table(summary.eval.10000,"Models2_Evaluation_SD.csv")
 
 
 ###############################################################
-### Which algorithms have been retained? ######################
+############ Which algorithms have been retained? #############
 ###############################################################
 ### Answering such a question is very important from now on ###
 ###############################################################
-### When all algorithms are called, please selected only ######
+### When all algorithms are called, please choose only ######
 ############## those you have selected ########################
 ###############################################################
 
