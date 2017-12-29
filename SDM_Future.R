@@ -94,16 +94,6 @@ spp<-read.table(file.choose(),row.names=1,header=T,sep=",")
 dim(spp)
 edit(spp)
 
-# Diagnosing possible problems with matrix:
-# generate species sums these will be NA is any are missing 
-csum <- colSums(spp) 
-# check if any are missing 
-any(is.na(csum)) 
-[1] TRUE 
-# yes, some missing, so which ones? 
-which(is.na(csum)) 
-# Check how many are missing 
-summary(spp[, c("x")]) #change 'x' by the column name
 # Remove duplicates
 dups2 <- duplicated(spp[, 1:2])
 sum(dups2) # how many duplicates?
