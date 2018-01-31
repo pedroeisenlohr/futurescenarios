@@ -625,8 +625,15 @@ environment50.85_NO <- stack(bio50.85.crop_NO)
 
 
 
-# Name variables
-  
+# Name variables 
+
+#### WARNING!!! #########
+#### WARNING!!! #########
+### THE SEQUENCE OF THE NAMES BELOW MUST BE EXACTLY THE SAME AS DEFINED ABOVE ####
+### SOMETIMES THE SEQUENCE IS "bio1", "bio10" etc. IF THIS IS THE CASE, PLEASE MAKE ADJUSTMENTS BELOW ###########################
+#################################################################################################################################
+
+
 names(environment50.45_AC) <- c("bio1","bio2","bio3","bio4","bio5",
 					"bio6","bio7","bio8","bio9","bio10",
 					"bio11","bio12","bio13","bio14","bio15",
