@@ -198,22 +198,23 @@ occurrence.resp <-  rep(1, length(myRespXY$long))
 ############################################
 
 ########## Prepare data ##########
+dim(spp)
+PA.number <- length(spp[,1])
+PA.number #número de pontos de ocorrência espacialmente únicos
 
 ### For CTA, GBM and RF algorithms:
-### for example, if you have n=100 ocurrence records
 sppBiomodData.PA.equal <- BIOMOD_FormatingData(
 	resp.var = occurrence.resp,
 	expl.var = env.selected,
 	resp.xy = myRespXY,
 	resp.name = "Occurrence",
 	PA.nb.rep = 10,
-	PA.nb.absences = 100,
+	PA.nb.absences = PA.number,
 	PA.strategy = "sre", #Read manual with caution
 	PA.sre.quant = 0.025)
 sppBiomodData.PA.equal
 
 # For the other 7 algorithms:
-#Don't modify anything here, except, if you wish, PA.strategy and/or PA.sre.quant:
 sppBiomodData.PA.10000 <- BIOMOD_FormatingData(
 	resp.var = occurrence.resp,
 	expl.var = env.selected,
@@ -226,20 +227,20 @@ sppBiomodData.PA.10000 <- BIOMOD_FormatingData(
 sppBiomodData.PA.10000
 
 
-
 # MaxEnt .jar
-  jar <- paste0(system.file(package = "dismo"), "/java/maxent.jar")
-  if (file.exists(jar) != T) {
-    url = "http://biodiversityinformatics.amnh.org/open_source/maxent/maxent.php?op=download"
-    download.file(url, dest = "maxent.zip", mode = "wb")
-    unzip("maxent.zip", files = "maxent.jar", exdir = system.file("java", package = "dismo"))
-    unlink("maxent.zip")
-    warning("Maxent into directory")
-  } 
-system.file("java", package = "dismo")
+#  jar <- paste0(system.file(package = "dismo"), "/java/maxent.jar")
+#  if (file.exists(jar) != T) {
+#    url = "http://biodiversityinformatics.amnh.org/open_source/maxent/maxent.php?op=download"
+#    download.file(url, dest = "maxent.zip", mode = "wb")
+#    unzip("maxent.zip", files = "maxent.jar", exdir = system.file("java", package = "dismo"))
+#    unlink("maxent.zip")
+#    warning("Maxent foi colocado no diretório")
+#  } 
+#system.file("java", package = "dismo")
 
-# Here, define the directory where MaxEnt has been installed, exactly as defined above
-myBiomodOption <- BIOMOD_ModelingOptions(MAXENT.Phillips = list(path_to_maxent.jar="C:/Documents/R/win-library/3.3/dismo/java"))
+myBiomodOption <- BIOMOD_ModelingOptions(MAXENT.Phillips = list(path_to_maxent.jar=paste0(system.file(package = "dismo"), "/java/maxent.jar")))
+
+
 
 
 
