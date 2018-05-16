@@ -156,7 +156,7 @@ bio.crop2 <-stack(bio.crop2)
 #bio.crop2 #Check with caution!
 
 # Select 10000 random points from mask
-mask <- bio.crop2$bio7 ###Any variable present in bio.crop2
+mask <- bio.crop1$bio1 ###Any variable present in bio.crop1
 rnd.points <- randomPoints(mask, 10000)
 plot(!is.na(mask), legend = F)
 points(rnd.points, cex = 0.5)
@@ -172,13 +172,11 @@ v1
 ### Check if no variable presents VIF>10
 
 # Subset environmental stack
-env.selected <- exclude(bio.crop2, v1) #exclude collinear variables identified with vifcor 
-env.selected
-plot(env.selected)
-
-# Name variables (only the selected variables!)
-names(env.selected) <- c("bio7", "bio11", "bio15", "bio16")
+env.selected <- exclude(bio.crop2, v1) #exclude collinear variables identified with vifcor
+env.selected <- stack(env.selected)
 names(env.selected)
+
+
 
 
 
