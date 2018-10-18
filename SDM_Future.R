@@ -2,6 +2,8 @@
 #### NICHE MODELS FORECASTED FOR FUTURE SCENARIOS ###
 #####################################################
 
+# Released on: October 18th, 2018
+
 # Contact: Pedro V. Eisenlohr (pedro.eisenlohr@unemat.br)
 
 ###################### Acknowledgments ##########################
